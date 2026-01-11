@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Send to Press</title>
+</head>
+<body>
+
+<h2>Send to news agencies</h2>
+
+<input id="name" placeholder="Your name"><br><br>
+<input id="email" placeholder="Your email"><br><br>
+
+<button onclick="openEmail()">Ready</button>
+
+<script>
+const AGENCIES = [
+"aih@cbc.ca",
+  "letters@bowesnet.com",
+  "mainstreet@halifax.cbc.ca",
+  "cbcinput@cbc.ca",
+  "national@cbc.ca",
+  "politics@cbc.ca",
+  "news@ctv.ca",
+  "torontodesk@ctv.ca",
+  "w-five@ctv.ca", 
+  "whistleblower@ctv.ca",
+  "newstips@globaltv.com",
+  "research2@globaltv.ca",
+  "globalnews.tor@globaltv.com",
+  "globalnews.calgary@globaltv.ca",
+  "Newsroom@globeandmail.com",
+  "letters@globeandmail.com",
+  "letters@nationalpost.com",
+  "letters@nationalpostbusiness.com",
+  "lettertoed@thestar.ca",
+  "sunletters@vancouversun.com",
+  "letters@thegazette.canwest.com",
+  "letters@thecoast.ca",
+  "letters@chroniclejournal.com",
+  "info@cmg.ca",
+  "news@cfra.com",
+  "vannews@citytv.ca",
+  "news@citynews.ca",
+];
+
+function openEmail() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+
+  if (!name || !email) {
+    alert("Please enter name and email");
+    return;
+  }
+
+  const subject = "Please be the Voice if Iranian Revolution Against the Islamic Regime";
+
+  const body = `
+  To the Editors and Journalists,
+
+All communication with Iran has been deliberately cut by the Islamic Regime.
+
+For three days now, we have had no contact with our families. We are entering the fourth day with no information about their safety. No calls. No internet. No truth.
+
+What we do know is this:
+People in Iran are in the streets day and night.
+They are unarmed.
+The Islamic Regime is using military weapons against civilians.
+
+Videos that manage to escape the blackout are horrifying.
+Information reaches us slowly, dangerously, and incompletely.
+This is not a protest anymore — this is a massacre under a communication blackout.
+
+If human rights matter.
+If human life matters.
+Then this is the moment for action, not statements.
+
+We, as Iranians outside the country, cannot tell you how to act.
+We are worried about our families.
+You, as global media, know exactly what to do.
+
+You have always claimed to stand for human rights.
+Now you must stand with the people of Iran.
+
+Be their voice.
+Break the silence.
+Expose what the regime is trying to hide.
+
+History will remember who spoke — and who chose silence.
+
+
+Please see a sample of images and videos in the Google Drive:
+https://drive.google.com/drive/folders/1GiRvXfp4uksV6axhNkyDKzuazK8fqEqm?usp=drive_link
+
+
+Iranian Community in Canada
+${name}
+${email}
+`;
+
+  const bcc = AGENCIES.join(",");
+
+  const mailto =
+    `mailto:?bcc=${encodeURIComponent(bcc)}` +
+    `&subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailto;
+}
+</script>
+
+</body>
+</html>
